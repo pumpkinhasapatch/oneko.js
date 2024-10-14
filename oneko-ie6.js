@@ -21,8 +21,11 @@ function neko() {
     alert: [[-7, -3]],
     scratchSelf: [
       [-5, 0],
-      [-6, 0],
+      [-6, 0]
+    ],
+    wash: [
       [-7, 0],
+      [-3, -3]
     ],
     scratchWallN: [
       [0, 0],
@@ -135,7 +138,7 @@ function neko() {
       Math.floor(Math.random() * 200) == 0 &&
       idleAnimation == null
     ) {
-      var avalibleIdleAnimations = ["sleeping", "scratchSelf"];
+      var avalibleIdleAnimations = ["sleeping", "scratchSelf", "wash"];
       if (nekoPosX < 32) {
         avalibleIdleAnimations.push("scratchWallW");
       }
@@ -170,6 +173,12 @@ function neko() {
       case "scratchWallE":
       case "scratchWallW":
       case "scratchSelf":
+        setSprite(idleAnimation, idleAnimationFrame);
+        if (idleAnimationFrame > 9) {
+          resetIdleAnimation();
+        }
+        break;
+      case "wash":
         setSprite(idleAnimation, idleAnimationFrame);
         if (idleAnimationFrame > 9) {
           resetIdleAnimation();

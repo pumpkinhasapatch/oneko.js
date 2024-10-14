@@ -26,8 +26,11 @@
     alert: [[-7, -3]],
     scratchSelf: [
       [-5, 0],
-      [-6, 0],
+      [-6, 0]
+    ],
+    wash: [
       [-7, 0],
+      [-3, -3]
     ],
     scratchWallN: [
       [0, 0],
@@ -149,7 +152,7 @@
       Math.floor(Math.random() * 200) == 0 &&
       idleAnimation == null
     ) {
-      let avalibleIdleAnimations = ["sleeping", "scratchSelf"];
+      let avalibleIdleAnimations = ["sleeping", "scratchSelf", "wash"];
       if (nekoPosX < 32) {
         avalibleIdleAnimations.push("scratchWallW");
       }
@@ -184,6 +187,12 @@
       case "scratchWallE":
       case "scratchWallW":
       case "scratchSelf":
+        setSprite(idleAnimation, idleAnimationFrame);
+        if (idleAnimationFrame > 9) {
+          resetIdleAnimation();
+        }
+        break;
+      case "wash":
         setSprite(idleAnimation, idleAnimationFrame);
         if (idleAnimationFrame > 9) {
           resetIdleAnimation();
